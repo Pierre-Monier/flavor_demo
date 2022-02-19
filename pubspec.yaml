@@ -95,6 +95,7 @@ flavorizr:
     android:
       flavorDimensions: "flavor-type"
     ios:
+  ide: "vscode"
 
   flavors:
     development:

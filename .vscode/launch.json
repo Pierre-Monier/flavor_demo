@@ -1,0 +1,104 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "development Debug",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "development"
+            ],
+            "program": "lib/main-development.dart"
+        },
+        {
+            "name": "development Profile",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "args": [
+                "--flavor",
+                "development"
+            ],
+            "program": "lib/main-development.dart"
+        },
+        {
+            "name": "development Release",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "args": [
+                "--flavor",
+                "development"
+            ],
+            "program": "lib/main-development.dart"
+        },
+        {
+            "name": "staging Debug",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "staging"
+            ],
+            "program": "lib/main-staging.dart"
+        },
+        {
+            "name": "staging Profile",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "args": [
+                "--flavor",
+                "staging"
+            ],
+            "program": "lib/main-staging.dart"
+        },
+        {
+            "name": "staging Release",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "args": [
+                "--flavor",
+                "staging"
+            ],
+            "program": "lib/main-staging.dart"
+        },
+        {
+            "name": "production Debug",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "production"
+            ],
+            "program": "lib/main-production.dart"
+        },
+        {
+            "name": "production Profile",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "args": [
+                "--flavor",
+                "production"
+            ],
+            "program": "lib/main-production.dart"
+        },
+        {
+            "name": "production Release",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "args": [
+                "--flavor",
+                "production"
+            ],
+            "program": "lib/main-production.dart"
+        }
+    ]
+}

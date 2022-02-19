@@ -1,41 +1,74 @@
-import 'package:flutter/foundation.dart';
+import 'dart:async';
+
+import 'package:flavors_demo/flavors.dart';
 import 'package:flutter/material.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
-import 'flavors.dart';
-import 'pages/my_home_page.dart';
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
-class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: F.title,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: _flavorBanner(
-        child: MyHomePage(),
-        show: kDebugMode,
-      ),
+      title: 'Flavors Demo',
+      theme: ThemeData.dark(),
+      home: const MyHomePage(title: 'Flavors Demo'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  PackageInfo _packageInfo = PackageInfo(
+    appName: 'Unknown',
+    packageName: 'Unknown',
+    version: 'Unknown',
+    buildNumber: 'Unknown',
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    _initPackageInfo();
+  }
+
+  Future<void> _initPackageInfo() async {
+    final info = await PackageInfo.fromPlatform();
+    setState(() {
+      _packageInfo = info;
+    });
+  }
+
+  Widget _infoTile(String title, String subtitle) {
+    return ListTile(
+      title: Text(title),
+      subtitle: Text(subtitle.isEmpty ? 'Not set' : subtitle),
     );
   }
 
-  Widget _flavorBanner({
-    required Widget child,
-    bool show = true,
-  }) =>
-      show
-          ? Banner(
-        child: child,
-        location: BannerLocation.topStart,
-        message: F.name,
-        color: Colors.green.withOpacity(0.6),
-        textStyle: TextStyle(
-            fontWeight: FontWeight.w700,
-            fontSize: 12.0,
-            letterSpacing: 1.0),
-        textDirection: TextDirection.ltr,
-      )
-          : Container(
-        child: child,
-      );
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: ListView(
+        children: <Widget>[
+          _infoTile('App name', _packageInfo.appName),
+          _infoTile('Package name', _packageInfo.packageName),
+          Image.network(
+            F.memeUrl,
+          ),
+        ],
+      ),
+    );
+  }
 }
